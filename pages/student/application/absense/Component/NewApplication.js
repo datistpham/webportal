@@ -19,6 +19,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function NewApplication(props) {
+  // const [change, setChange]= us
+  const {setChange }= props
   const [open, setOpen] = React.useState(false);
   const [fileAttach, setFileAttach]= React.useState()
   const [startDate, setStartDate]= React.useState()
@@ -94,6 +96,7 @@ export default function NewApplication(props) {
             const result= await add_application_absense(content, fileUpload?.file, startDate, endDate, props?.student_id, props?.class_id)
             if(result?.add=== true) {
               swal("Notice", "Add application absense request", "success")
+              .then(()=> setChange(prev=> !prev))
               .then(()=> handleClose())
               .then(()=> {
                 setFileAttach()

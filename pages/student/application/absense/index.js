@@ -132,7 +132,7 @@ function StudentData() {
   return (
     <Box sx={{ height: 400, width: "100%", padding: 1}}>
       {/* <RegisterCourse setChange={setChange} /> */}
-      <NewApplication class_id={studentData?.class_id} student_id={Cookies.get("uid")} />
+      <NewApplication setChange={setChange} class_id={studentData?.class_id} student_id={Cookies.get("uid")} />
       <div></div>
       <br />
       <div></div>

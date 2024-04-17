@@ -4,7 +4,7 @@ const connection= mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "portal"
+    database: "portal",
 })
 
 export default connection

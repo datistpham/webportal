@@ -14,7 +14,6 @@ const Header= ()=> {
             <div>
                 <TextField
                     className={"wrap-inp-search"}
-                    style={{height: 36}}
                     id="search"
                     value={search}
                     onChange={(e)=> setSearch(e.target.value)}

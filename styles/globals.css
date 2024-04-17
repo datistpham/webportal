@@ -200,3 +200,7 @@ a {
 .wrap-inp-search > div {
   height: 36px !important;
 }
+
+.ant-picker-dropdown{
+  z-index: 1056;
+}
