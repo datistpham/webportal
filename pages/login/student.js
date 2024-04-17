@@ -79,18 +79,11 @@ function Login() {
                     const result = await login(account, password);
                     if (result?.exist === true) {
                       if (result?.role === 1) {
-                        swal("Notice", "Login is succsessfully", "success")
-                          .then(() => {
-                            Cookies.set("uid", result?.uid);
-                            Cookies.set("role", result?.role);
-                            Cookies.set("sid", result?.sid);
-                          })
-
-                          .then(
-                            () =>
-                              (window.location.href =
-                                window.location.origin + "/student")
-                          );
+                        Cookies.set("uid", result?.uid);
+                        Cookies.set("role", result?.role);
+                        Cookies.set("sid", result?.sid);
+                        window.location.href =
+                          window.location.origin + "/student";
                       }
                     } else {
                       swal("Notice", "Account is not exist", "error");
@@ -102,7 +95,7 @@ function Login() {
                 className="mb-4"
                 size="lg"
               >
-                Login 
+                Login
               </MDBBtn>
               <br />
               <div className="">You{"'"}re not an account?</div>
@@ -116,7 +109,6 @@ function Login() {
               >
                 Signup
               </MDBBtn>
-              
             </MDBCol>
 
             <MDBCol

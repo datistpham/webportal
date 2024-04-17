@@ -49,15 +49,12 @@ function Login() {
                 if(result?.exist=== false ) {
                   swal("Notice", "Account or password is not correct, try again", "error")
                 }
+                
                 else {
-                  swal("Notice", "Login is successfully", "success")
-                  .then(() => {
-                    Cookies.set("uid", result?.uid);
+                  Cookies.set("uid", result?.uid);
                     Cookies.set("role", result?.role);
                     Cookies.set("sid", result?.sid)
-
-                  })
-                  if(result?.role=== 1) {
+                    if(result?.role=== 1) {
                     router.push("/student")
                   }
                   else if(result?.role=== 2) {
@@ -66,7 +63,6 @@ function Login() {
                   else if(result?.role=== 3) {
                     router.push("/admin")
                   }
-
                 }
               }} className='mb-4' size='lg'>Login</MDBBtn>
 

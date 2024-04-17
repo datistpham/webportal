@@ -63,24 +63,17 @@ function Login() {
                     const result = await login(account, password);
                     if (result?.exist === true) {
                       if (result?.role === 2) {
-                        swal("Notice", "Login is succsessfully", "success")
-                          .then(() => {
-                            Cookies.set("uid", result?.uid);
-                            Cookies.set("role", result?.role);
-                            Cookies.set("sid", result?.sid)
-
-                          })
-                          .then(
-                            () =>
-                              (window.location.href =
-                                window.location.origin + "/teacher")
-                          );
+                        Cookies.set("uid", result?.uid);
+                        Cookies.set("role", result?.role);
+                        Cookies.set("sid", result?.sid);
+                        window.location.href =
+                          window.location.origin + "/teacher";
                       }
                     } else {
                       swal("Notice", "Account is not exist", "error");
                     }
                   } catch (error) {
-                    console.log(error)
+                    console.log(error);
                     swal("Notice", "Error unknown", "error");
                   }
                 }}
