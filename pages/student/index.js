@@ -40,11 +40,11 @@ const items = [
     <ContainerOutlined />
   ),
   ,
-  getItem(
-    <Link href="/student/feedback">Feed back</Link>,
-    "5",
-    <ContainerOutlined />
-  ),
+  // getItem(
+  //   <Link href="/student/feedback">Feed back</Link>,
+  //   "5",
+  //   <ContainerOutlined />
+  // ),
   getItem(
     <Link href="/student/application/absense">Application absense</Link>,
     "6",
