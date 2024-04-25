@@ -71,4 +71,37 @@ export const sendMailAccount = async (email, account, password) => {
   );
 };
 
+
+export const sendMailScore = async (email, score1, score2, score3, score4, midTerm, finalTerm) => {
+  transporter.sendMail(
+    {
+      from: "meolua99@gmail.com",
+      to: email,
+      subject: "Your score",
+      html: `
+      <div>This is your score</div>
+      <br />
+      <div>Score1: <strong>${score1}</strong></div>
+      <br />
+      <div>Score2: <strong>${score2}</strong></div>
+      <br />
+      <div>Score3: <strong>${score3}</strong></div>
+      <br />
+      <div>Score4: <strong>${score4}</strong></div>
+      <br />
+      <div>Mid term: <strong>${midTerm}</strong></div>
+      <br />
+      <div>Final term: <strong>${finalTerm}</strong></div>
+      <br />
+      <div>Have nice day !</div>
+    `,
+    },
+    (err, result) => {
+      if (err) throw err;
+      return result.response;
+    }
+  );
+};
+
+
 export default sendEmail;

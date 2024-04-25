@@ -33,11 +33,11 @@ import { AppContext } from "../_app";
       "1",
       <PieChartOutlined />
     ),
-    getItem(
-      <Link href="/teacher/score">Manage scores</Link>,
-      "2",
-      <ContainerOutlined />
-    ),
+    // getItem(
+    //   <Link href="/teacher/score">Manage scores</Link>,
+    //   "2",
+    //   <ContainerOutlined />
+    // ),
     // getItem(
     //   <Link href="/teacher/attendance">Manage attendance</Link>,
     //   "4",

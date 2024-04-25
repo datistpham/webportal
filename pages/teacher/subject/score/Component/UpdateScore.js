@@ -29,6 +29,8 @@ export default function UpdateScore(props) {
   const [studentId, setStudentId]= React.useState(props?.student_id)
   const [score1, setScore1]= React.useState(props?.score_1)
   const [score2, setScore2]= React.useState(props?.score_2)
+  const [score3, setScore3]= React.useState(props?.score_3)
+  const [score4, setScore4]= React.useState(props?.score_4)
   const [midTerm, setMidTerm]= React.useState(props?.mid_term)
   const [finalTerm, setFinalTerm]= React.useState(props?.final_term)
   const handleClickOpen = () => {
@@ -51,7 +53,7 @@ export default function UpdateScore(props) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Update student information?"}</DialogTitle>
+        <DialogTitle>{"Update score?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" style={{padding: 10}}>
             <TextField
@@ -68,6 +70,24 @@ export default function UpdateScore(props) {
               label={"Score 2"}
               value={score2}
               onChange={(e) => setScore2(e.target.value)}
+            />
+            <div></div>
+            <br />
+            <div></div>
+            <TextField
+              style={{ width: 400, height: 50 }}
+              label={"Score 3"}
+              value={score3}
+              onChange={(e) => setScore3(e.target.value)}
+            />
+            <div></div>
+            <br />
+            <div></div>
+            <TextField
+              style={{ width: 400, height: 50 }}
+              label={"Score 4"}
+              value={score4}
+              onChange={(e) => setScore4((e.target.value))}
             />
             <div></div>
             <br />
@@ -96,7 +116,7 @@ export default function UpdateScore(props) {
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={async ()=> {
             try {
-              const result= await update_score_class_subject({score_1: score1, score_2: score2, mid_term: midTerm, final_term: finalTerm, class_id: classId, score_id: scoreId, course_id: courseId, student_id: studentId})
+              const result= await update_score_class_subject({score_1: score1, score_2: score2, mid_term: midTerm, final_term: finalTerm, class_id: classId, score_id: scoreId, course_id: courseId, student_id: studentId, score_3: parseInt(score3), score_4: parseInt(score4)})
               if(result?.update=== true) {
                 swal("Notice", "Updated score student", "success")
                 .then(()=> props?.setChange(prev=> !prev))

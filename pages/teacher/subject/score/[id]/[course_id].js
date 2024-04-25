@@ -72,6 +72,18 @@ function StudentData() {
       editable: true,
     },
     {
+      field: "score_3",
+      headerName: "Score 3",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "score_4",
+      headerName: "Score 4",
+      width: 150,
+      editable: true,
+    },
+    {
       field: "mid_term",
       headerName: "Mid term",
       width: 150,
@@ -91,7 +103,7 @@ function StudentData() {
     },
     {
       headerName: "Action",
-      width: 200,
+      width: 400,
       editable: true,
       renderCell: (params) => {
         return (
@@ -104,6 +116,25 @@ function StudentData() {
             }}
           >
             <UpdateScore {...params.row} setChange={setChange} />
+            <Button onClick={async ()=> {
+              try {
+                const res= await axios({
+                  url: "/api/v/send_score",
+                  method: "post",
+                  data: {
+                    score1: params.row.score_1 , score2: params.row.score_2, score3: params.row.score_3, score4: params.row.score_4, midTerm: params.row.mid_term, finalTerm: params.row.final_term, email: params.row.email
+                  }
+                })
+                const result= await res.data
+                if(result?.send=== true) {
+                  swal("Notice", "Send success", "success")
+
+                }
+              }
+              catch(e) {
+                swal("Notice", "Is failure", "error")
+              }
+            }}>Send score to mail student</Button>
             {/* <UpdateStudent {...params.row} setChange={setChange} /> */}
             <DeleteOutlined
               onClick={async () => {
@@ -157,6 +188,8 @@ function StudentData() {
   const [studentId, setStudentId] = React.useState();
   const [score1, setScore1]= React.useState()
   const [score2, setScore2]= React.useState()
+  const [score3, setScore3]= React.useState()
+  const [score4, setScore4]= React.useState()
   const [midTerm, setMidTerm]= React.useState()
   const [finalTerm, setFinalTerm]= React.useState()
   const handleSubmit= async ()=> {
@@ -165,7 +198,7 @@ function StudentData() {
         url: "/api/v2/subject/score",
         method: "POST",
         data: {
-          class_id: id, course_id, student_id: studentId, score_1: score1, score_2: score2 ,mid_term: midTerm, final_term: finalTerm
+          class_id: id, course_id, student_id: studentId, score_1: score1, score_2: score2 ,mid_term: midTerm, final_term: finalTerm, score_3: score3, score_4: score4
         }
       })
       const result= await res.data
@@ -228,6 +261,14 @@ function StudentData() {
               <br></br>
               <div></div>
               <TextField value={score2} onChange={(e)=> setScore2(e.target.value)} placeholder="Score 2" fullWidth />
+              <div></div>
+              <br></br>
+              <div></div>
+              <TextField value={score3} onChange={(e)=> setScore3(e.target.value)} placeholder="Score 3" fullWidth />
+              <div></div>
+              <br></br>
+              <div></div>
+              <TextField value={score4} onChange={(e)=> setScore4(e.target.value)} placeholder="Score 4" fullWidth />
               <div></div>
               <br></br>
               <div></div>
