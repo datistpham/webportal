@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 04, 2024 at 08:18 AM
+-- Generation Time: Apr 25, 2024 at 01:57 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -46,7 +46,8 @@ CREATE TABLE `absense_application` (
 
 INSERT INTO `absense_application` (`id`, `student_id`, `class_id`, `content`, `course_id`, `attach_file`, `time_absense`, `time_created`, `status`) VALUES
 (1, 2, 9, 'i want to leave to this school', 2, '8421a003-4965-422d-a89c-ab83e2647e01.pdf', 4, '2023-04-30 13:42:01.463000', 0),
-(4, 2, 9, 'aaaa', 2, 'c3db2ba3-3808-4dde-9b6e-7fea19cf3c44.pdf', 3, '2023-04-30 14:23:18.817000', 0);
+(4, 2, 9, 'aaaa', 2, 'c3db2ba3-3808-4dde-9b6e-7fea19cf3c44.pdf', 3, '2023-04-30 14:23:18.817000', 0),
+(5, 2, 9, 'I don\'t want to go to school', 0, 'ea53acd7-5b60-42ad-b3ee-bcb612e33c48.webp', 9, '2024-04-17 15:08:49.485000', 0);
 
 -- --------------------------------------------------------
 
@@ -219,7 +220,9 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`id`, `course_id`, `class_id`, `day_schedule`, `shift`, `time_start`, `time_end`) VALUES
-(1, 2, 3, '02/05/2023', 1, 3, 5);
+(1, 2, 3, '02/05/2023', 1, 3, 5),
+(2, 0, 3, '17/04/2024', 1, 1, 4),
+(3, 2, 3, '17/04/2024', 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -234,6 +237,8 @@ CREATE TABLE `score` (
   `course_id` int(11) NOT NULL,
   `score_1` float NOT NULL,
   `score_2` float NOT NULL,
+  `score_3` float NOT NULL,
+  `score_4` float NOT NULL,
   `mid_term` float NOT NULL,
   `final_term` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -242,12 +247,13 @@ CREATE TABLE `score` (
 -- Dumping data for table `score`
 --
 
-INSERT INTO `score` (`score_id`, `student_id`, `class_id`, `course_id`, `score_1`, `score_2`, `mid_term`, `final_term`) VALUES
-(1, 2, 3, 2, 9, 9, 10, 8.5),
-(2, 12, 2, 3, 10, 10, 10, 10),
-(3, 12, 2, 3, 11, 11, 11, 10),
-(4, 12, 2, 3, 10, 10, 10, 10),
-(5, 12, 3, 2, 10, 10, 10, 10);
+INSERT INTO `score` (`score_id`, `student_id`, `class_id`, `course_id`, `score_1`, `score_2`, `score_3`, `score_4`, `mid_term`, `final_term`) VALUES
+(1, 2, 3, 2, 9, 9, 0, 0, 10, 8.5),
+(2, 12, 2, 3, 10, 10, 0, 0, 10, 10),
+(3, 12, 2, 3, 11, 11, 0, 0, 11, 10),
+(4, 12, 2, 3, 10, 10, 0, 0, 10, 10),
+(5, 12, 3, 2, 10, 11, 10, 10, 10, 10),
+(6, 12, 3, 2, 10, 11, 10, 10, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -536,7 +542,7 @@ ALTER TABLE `verify_code`
 -- AUTO_INCREMENT for table `absense_application`
 --
 ALTER TABLE `absense_application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -572,13 +578,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
-  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `score_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sign_up_student`
